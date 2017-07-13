@@ -1,0 +1,70 @@
+{{display-error isLoaded=isLoaded
+                errorMessage=errorMessage
+                responseMessage=responseMessage}}
+
+<article class="panel panel-default">
+
+  <div class="panel-heading">
+    <h2>{{title}}</h2>
+  </div>
+  <div class="panel-body">
+    {{#with (changeset model trainingValidations) as |changeset|}}
+      {{#validated-form
+        model        = changeset
+        on-submit    = (action submit)
+        submit-label = 'Save' as |trainingInput| }}
+
+
+        <div class="form-group row">
+          <label for="example-datetime-local-input"
+                 class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-form-label">Date: </label>
+          <div class="col-xs-6 col-sm-5 col-md-3 col-lg-3">
+            {{#trainingInput.input name="date"}}
+              {{custom-datetimepicker changeset=changeset}}
+            {{/trainingInput.input}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="example-datetime-local-input"
+                 class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-form-label">Duration (h): </label>
+          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+            {{trainingInput.input type="text" name='hours'}}
+          </div>
+
+          <label for="example-datetime-local-input"
+                 class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-form-label">Duration (min): </label>
+          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+            {{trainingInput.input type="text" name='minutes'}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="example-datetime-local-input"
+                 class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-form-label">Distance (km): </label>
+          <div class="col-xs-4 col-sm-3 col-md-3 col-lg-3">
+            {{trainingInput.input type="text" name='distance'}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="example-datetime-local-input"
+                 class="col-xs-2 col-sm-2 col-md-1 col-lg-1 col-form-label">Description: </label>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-8">
+            {{textarea class="form-control" rows="7" value=changeset.description}}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            {{#link-to 'trainings.index' tagName='button' class='btn btn-danger'}}Back{{/link-to}}
+            {{trainingInput.submit class='btn btn-success' label='Save'}}
+          </div>
+        </div>
+      {{/validated-form}}
+    {{/with}}
+  </div>
+</article>

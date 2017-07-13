@@ -1,0 +1,34 @@
+<h2>Weekly report</h2>
+
+{{display-error isLoaded=isLoaded
+                errorMessage=errorMessage
+                responseMessage=responseMessage}}
+
+{{#if model}}
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      {{#each model as |reportItem|}}
+        <article class="panel panel-default">
+          <div class="panel-heading">
+            From: {{format-date afterDate format='DD-MM-YYYY HH:mm'}}
+            Amount of trainings: {{reportItem.quantity}}
+          </div>
+          <div class="panel-body">
+            <p>Total Distance: {{number-format reportItem.totalDistance decimals=2 thousandsSeparator=' '}} km</p>
+            <p>Average Distance: {{number-format reportItem.averageDistance decimals=2 thousandsSeparator=' '}} km</p>
+            <p>Average Duration: {{reportItem.averageDuration.hours}} hours {{reportItem.averageDuration.minutes}}
+              minutes</p>
+            <p>Average Velocity: {{average-velocity duration=reportItem.averageDuration
+                                                    distance=reportItem.averageDistance}}</p>
+          </div>
+        </article>
+      {{/each}}
+    </div>
+  </div>
+{{/if}}
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    {{#link-to 'trainings.index' tagName='button' class='btn btn-danger'}}Back{{/link-to}}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="col-xs-6 col-sm-6 col-md-5 col-lg-4">
+  {{display-error isLoaded=isLoaded
+                  errorMessage=errorMessage
+                  responseMessage=responseMessage}}
+  {{bs-datetimepicker date=modelDate
+                      format='YYYY-MM-DD HH:mm'
+                      showClose=true
+                      maxDate=currentDate
+                      useCurrent=true
+                      placeholder="Pick the initial date for week report"
+                      todayHighlight=true
+                      updateDate=(action (mut modelDate))}}
+</div>
+<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+  {{#link-to 'report' (query-params userId=userId afterDate=modelDate._d)
+             class="btn btn-default" disabled=isDisabled}}Get report{{/link-to}}
+</div>

@@ -1,0 +1,49 @@
+<div class="row .with-margin">
+  <div class="col-xs-3 col-sm-3 col-md-2 col-lg-2 .with-margin">
+    {{#link-to 'trainings.new' (query-params userId=userId) tagName='button' class='btn btn-success'}}
+      Add training{{/link-to}}
+  </div>
+  {{report-form userId=userId modelDate=model.date}}
+</div>
+<br/>
+<div class="row ">
+  <div class="col-xs-4 col-sm-3 col-md-2 .with-margin">
+    {{#power-select
+      selected=selectedSortColumn
+      options=sortColumns
+      searchEnabled=false
+      placeholder="Sort by..."
+      onchange=(action "sort")
+    as |sortColumn|
+    }}
+      Sort by {{sortColumn.name}}
+    {{/power-select}}
+  </div>
+
+  <div class="col-xs-4	col-sm-3	col-md-2 .with-margin">
+    {{#power-select
+      selected=selectedSortOption
+      options=sortOptions
+      searchEnabled=false
+      placeholder="Order..."
+      onchange=(action "order")
+    as |direction|
+    }}
+      Order: {{direction.name}}
+    {{/power-select}}
+  </div>
+</div>
+<br/>
+{{display-error isLoaded=isSaved
+                errorMessage=errorMessage
+                responseMessage=responseMessage}}
+
+{{#scroll-wrapper condition=condition}}
+  {{#each model as |trainingItem|}}
+    {{training-item training=trainingItem delete-action=(action 'deleteTraining')}}
+  {{/each}}
+{{/scroll-wrapper}}
+
+{{infinity-loader infinityModel=model loadingText="Loading..." loadedText="All trainings have been uploaded"}}
+
+{{go-to-top-anchor condition=condition}}

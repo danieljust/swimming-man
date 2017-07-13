@@ -1,0 +1,8 @@
+{{#scroll-wrapper condition=condition}}
+  {{#each model as |userItem|}}
+    {{user-item user=userItem currentUser=currentUser}}
+  {{/each}}
+
+  {{infinity-loader infinityModel=model loadingText="Loading..." loadedText="No more users to load"}}
+  {{go-to-top-anchor condition=condition}}
+{{/scroll-wrapper}}

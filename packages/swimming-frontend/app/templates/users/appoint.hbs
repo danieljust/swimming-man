@@ -1,0 +1,17 @@
+{{display-error isLoaded=isSaved
+                errorMessage=errorMessage
+                responseMessage=responseMessage}}
+<p>
+  <strong>
+    E-mail: {{model.user.email}}
+  </strong>
+</p>
+<p>
+  {{model.user.firstName}}
+  {{model.user.lastName}}
+</p>
+
+{{#each model.managers as |manager|}}
+  {{manager-item manager=manager user=model.user emberAjax=ajax}}
+{{/each}}
+{{#link-to 'users.index' tagName='button' class='btn btn-danger'}}Back{{/link-to}}

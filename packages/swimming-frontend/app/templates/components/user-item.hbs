@@ -1,0 +1,14 @@
+<article class="panel panel-default">
+  <div class="panel-body">
+    <p>email: {{user.email}}</p>
+    <p>firstName: {{user.firstName}}</p>
+    <p>lastName: {{user.lastName}}</p>
+    {{#if isAdmin}}
+      <p>Role: {{user.positions.name}}</p>
+      {{#link-to 'users.appoint' user.id}}Assign managers{{/link-to}}
+    {{else}}
+      {{#link-to 'trainings.index' (query-params userId=user.id)}}View trainings{{/link-to}}
+    {{/if}}
+    {{#link-to 'users.edit' user}}Edit user{{/link-to}}
+  </div>
+</article>

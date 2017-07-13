@@ -1,0 +1,38 @@
+{
+  "name": "swimming-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "NODE_ENV=test jasmine spec/**/*.js"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "bluebird": "^3.5.0",
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "express-jwt": "^5.1.0",
+    "faker": "^4.1.0",
+    "jsonwebtoken": "^7.3.0",
+    "lodash.filter": "^4.6.0",
+    "lodash.pick": "^4.4.0",
+    "lodash.uniq": "^4.5.0",
+    "lodash.uniqby": "^4.7.0",
+    "moment": "^2.18.1",
+    "morgan": "~1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sequelize": "^3.30.4",
+    "sequelize-cli": "^2.7.0",
+    "serve-favicon": "^2.4.2",
+    "sqlite3": "^3.1.8",
+    "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "lodash.uniq": "^4.5.0",
+    "supertest": "^3.0.0"
+  }
+}

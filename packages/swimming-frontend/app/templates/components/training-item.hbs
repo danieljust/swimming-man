@@ -1,0 +1,31 @@
+<article class="panel panel-default">
+  <div class="panel-heading">
+    <strong>
+      Date: {{format-date training.date format='DD-MM-YYYY'}}
+      Time: {{format-date training.date format='HH:mm'}}
+    </strong>
+    <div class="pull-right">
+      {{#link-to 'trainings.edit' training tagName='button' class="btn btn-default btn-xs"}}
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+      {{/link-to}}
+      <button {{action delete-action training.id}} class="btn btn-default btn-xs">
+        <span class="glyphicon glyphicon-trash" ></span> Delete
+      </button>
+    </div>
+
+  </div>
+  <div class="panel-body">
+    <p><strong>Duration:</strong> {{training.duration.hours}} hours {{training.duration.minutes}} minutes</p>
+    <p><strong>Distance:</strong> {{number-format training.distance decimals=2 thousandsSeparator=' '}} km</p>
+    <p><strong>Average velocity:</strong> {{average-velocity duration=training.duration
+                                                             distance=training.distance}}</p>
+
+    {{#if training.description}}
+      <div class="training-description">
+        <p><strong>Description:</strong></p>
+        <div class="description">{{training.description}}</div>
+      </div>
+    {{/if}}
+
+  </div>
+</article>

@@ -1,0 +1,35 @@
+<div class="jumbotron text-center">
+  <h2>Enter your registration data in fields bellow</h2>
+  {{display-error isLoaded=isLoaded
+                  errorMessage=errorMessage
+                  responseMessage=responseMessage}}
+
+    {{#validated-form
+      model        = (changeset model registrationValidations)
+      on-submit    = (action submit)
+      submit-label = 'Save' as |registraionForm| }}
+
+
+
+        <div class="form-horizontal form-group form-group-lg row">
+          <div class="col-md-4 col-md-offset-4">
+
+
+
+            {{registraionForm.input placeholder="First name" name="firstName"}}
+            {{registraionForm.input placeholder="Last name" name="lastName"}}
+            {{registraionForm.input type="email" placeholder="E-mail address" name="email"}}
+            {{registraionForm.input type="password" placeholder="Password" name="password"}}
+            {{registraionForm.input type="password" placeholder="Confirm password" name="confirmPassword"}}
+          </div>
+            <div class="col-md-2 col-md-offset-5">
+              {{registraionForm.submit class="btn btn-primary btn-lg btn-block" label="Register"}}
+            </div>
+
+
+        </div>
+
+
+    {{/validated-form}}
+
+</div>

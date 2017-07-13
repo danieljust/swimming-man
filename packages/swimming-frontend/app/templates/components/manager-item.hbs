@@ -1,0 +1,12 @@
+{{display-error isLoaded=isSaved
+                errorMessage=errorMessage
+                responseMessage=responseMessage}}
+
+<article class="panel panel-default">
+  <div class="panel-body">
+    <strong>email: {{manager.email}}</strong>
+    <p>firstName: {{manager.firstName}}</p>
+    <p>lastName: {{manager.lastName}}</p>
+    <button class="btn btn-info" {{action 'changeManagerStatus' manager user emberAjax}}>{{status}}</button>
+  </div>
+</article>
